@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  rails:
+  web:
     container_name: g2_app
     build:
       context: .
@@ -13,7 +13,7 @@ services:
     environment:
       NOTHING: "NOTHING"
     command: >
-      bash -c "bundle exec rails db:migrate && bin/dev -p 3000 -b '0.0.0.0'"
+      bash -c "bundle && bundle exec rails db:migrate && bin/rails -p 3000 -b '0.0.0.0'"
     stdin_open: true
     tty: true
     ports:

@@ -1,0 +1,19 @@
+{
+	"name": "Existing Docker Compose",
+	"dockerComposeFile": [
+		"../docker-compose.yml",
+		"docker-compose.override.yml"
+	],
+	"service": "web",
+  "workspaceFolder": "/app",
+  "customizations": {
+		"vscode": {
+			"extensions": [
+				"castwide.solargraph",
+				"rebornix.Ruby",
+				"misogi.ruby-rubocop",
+				"KoichiSasada.vscode-rdbg"
+			]
+		}
+	}
+}
