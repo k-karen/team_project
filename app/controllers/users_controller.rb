@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def new
     @user = User.new
@@ -6,9 +8,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to login_path, notice: 'User was successfully created. Please check your email to activate.'
+      redirect_to(login_path, notice: "User was successfully created. Please check your email to activate.")
     else
-      render :new
+      render(:new)
     end
   end
 
@@ -16,9 +18,9 @@ class UsersController < ApplicationController
     if (user = User.load_from_activation_token(params[:token]))
       user.activate!
       auto_login(user)
-      redirect_to root_path, notice: 'Your account has been activated successfully!'
+      redirect_to(root_path, notice: "Your account has been activated successfully!")
     else
-      redirect_to root_path, alert: 'Invalid activation code'
+      redirect_to(root_path, alert: "Invalid activation code")
     end
   end
 
