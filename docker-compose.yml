@@ -13,7 +13,7 @@ services:
     environment:
       NOTHING: "NOTHING"
     command: >
-      bash -c "bundle && yarn && bundle exec rails db:migrate && bin/dev"
+      bash -c "rm /app/tmp/pids/server.pid; bundle && yarn && bundle exec rails db:migrate && PROCFILE=procfile.dev bin/dev"
     stdin_open: true
     tty: true
     ports:
