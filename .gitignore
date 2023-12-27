@@ -39,3 +39,5 @@
 !.vscode/launch.json
 !.devcontainer/devcontainer.json
 !.devcontainer/docker-compose.override.yml
+
+node_modules/**/*

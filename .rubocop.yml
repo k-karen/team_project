@@ -1,0 +1,10 @@
+inherit_from:
+  - https://raw.githubusercontent.com/Shopify/ruby-style-guide/main/rubocop.yml
+
+AllCops:
+  Exclude:
+    - "db/schema.rb"
+    - "config/initializers/*"
+    - "db/migrate/*.rb"
+    - "config/**/*"
+    - "bin/*"
