@@ -2,4 +2,4 @@ version: '3'
 services:
   web:
     # 待ってるだけのコンテナを立ち上げる
-    command: /bin/sh -c "while sleep 10; do :; done"
+    command: bash -c "rm /app/tmp/pids/server.pid; bundle && yarn && bundle exec rails db:migrate && bin/dev && pkill -f 'rails' && rm /app/tmp/pids/server.pid; "
