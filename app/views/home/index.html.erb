@@ -3,6 +3,7 @@
     <% if logged_in? %>
       <h1>Welcome, <%= current_user.email %></h1>
       <%= link_to 'Logout', logout_path, data: { turbo_method: :delete } %>
+      <%= render 'home/logged_in' %>
     <% else %>
       <%= link_to 'Login', login_path %> or <%= link_to 'Sign Up', sign_up_path %>
     <%end%>

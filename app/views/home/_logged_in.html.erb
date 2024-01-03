@@ -1,0 +1,19 @@
+<h1 class="text-center">Welcome, <%= current_user.email %></h1>
+<div class="px-5">
+  <div class="card p-3 d-flex flex-row" style="">
+    <div class="card-img-div">
+      <img src="https://cdn.pixabay.com/photo/2015/02/19/12/48/indian-642055_1280.jpg" class="card-img-top" alt="アイコン" style="width: 200px; ">
+    </div>
+    <div class="card-body">
+      <h2 class="card-title">マハーヴィーラ</h2>
+      <p class="card-text">1992/2/29</p>
+      <p class="card-text">主婦だったけど、趣味のお菓子作りでお店はじめました。</p>
+      <div class="justify-content-around">
+        <a href="#" class="btn btn-primary">プロフィール変更</a>
+        <%= link_to 'Logout', logout_path, data: { turbo_method: :delete } %>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
