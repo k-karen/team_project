@@ -1,21 +1,10 @@
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.username %>
-      </h1>
-    </section>
-  </aside>
-</div>
-
 <div class="px-5">
   <div class="card p-3 d-flex flex-row" style="">
     <div class="card-img-div">
-      <img src="https://cdn.pixabay.com/photo/2015/02/19/12/48/indian-642055_1280.jpg" class="card-img-top" alt="アイコン" style="width: 200px; ">
+       <%= gravatar_for current_user, size: 300 %>
     </div>
     <div class="card-body">
-      <h2 class="card-title">マハーヴィーラ</h2>
+      <h2 class="card-title"><!--<%= current_user.username %>--> マハーヴィーラ</h2>
       <p class="card-text">1992/2/29</p>
       <p class="card-text">主婦だったけど、趣味のお菓子作りでお店はじめました。</p>
       <div class="justify-content-around">
