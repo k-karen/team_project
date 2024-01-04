@@ -280,6 +280,7 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.6.9-aarch64-linux)
     sqlite3 (1.6.9-arm64-darwin)
+    sqlite3 (1.6.9-x86_64-linux)
     stimulus-rails (1.0.4)
       railties (>= 6.0.0)
     thor (1.2.1)
@@ -314,6 +315,7 @@ GEM
 PLATFORMS
   aarch64-linux
   arm64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap

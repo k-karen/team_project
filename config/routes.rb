@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :rooms do
+    resources :messages
+  end
+  
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: '/letter_opener'
   end
