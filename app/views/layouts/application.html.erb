@@ -1,16 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
+    <title>g2</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload", "media": "all" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "turbo", type: "module" %>
   </head>
-
   <body>
+    <nav class="navbar navbar-expand navbar-light bg-light sticky-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">g2</a>
+        <ul class="navbar-nav ms-auto">
+          <% if logged_in? %>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><%= current_user.email %></a>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Logout', logout_path, class: 'nav-link', data: { turbo_method: :delete } %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to 'Login', login_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sign Up', sign_up_path, class: 'nav-link' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>

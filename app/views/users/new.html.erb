@@ -1,15 +1,17 @@
-<%= form_with model: @user, url: sign_up_path do |form| %>
-  <div>
-    <%= form.label :email %>
-    <%= form.email_field :email %>
-  </div>
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-  <div>
-    <%= form.label :username %>
-    <%= form.text_field :username %>
-  </div>
-  <%= form.submit "Sign Up" %>
-<% end %>
+<div class="container">
+  <%= form_with model: @user, url: sign_up_path, class: 'form-group' do |form| %>
+    <div class="mb-3">
+      <%= form.label :email, class: 'form-label' %>
+      <%= form.email_field :email, class: 'form-control' %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :password, class: 'form-label' %>
+      <%= form.password_field :password, class: 'form-control', autocomplete: 'new-password' %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :username, class: 'form-label' %>
+      <%= form.text_field :username, class: 'form-control' %>
+    </div>
+    <%= form.submit "Sign Up", class: 'btn btn-primary' %>
+  <% end %>
+</div>

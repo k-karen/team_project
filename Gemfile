@@ -82,3 +82,5 @@ group :test do
 end
 
 gem "sorcery", "~> 0.16.5"
+
+gem "cssbundling-rails", "~> 1.3"
