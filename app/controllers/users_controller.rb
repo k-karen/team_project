@@ -5,10 +5,16 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to(login_path, notice: "User was successfully created. Please check your email to activate.")
+      reset_session
+      auto_login(@user)
+      redirect_to(root_path, notice: "User was successfully created. Please check your email to activate.")
     else
       render(:new)
     end

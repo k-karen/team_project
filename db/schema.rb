@@ -35,6 +35,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_04_092723) do
     t.string "activation_state"
     t.string "activation_token"
     t.datetime "activation_token_expires_at"
+    t.integer "age"
+    t.string "biography"
     t.index ["activation_token"], name: "index_users_on_activation_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
