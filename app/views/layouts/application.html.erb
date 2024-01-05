@@ -3,11 +3,12 @@
   <head>
     <title>g2</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload", "media": "all" %>
-    <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= javascript_include_tag "turbo", type: "module" %>
   </head>
   <body>
@@ -33,6 +34,14 @@
         </ul>
       </div>
     </nav>
+    <div data-controller="hello">
+      <!-- <input>をターゲット（操作対象のDOM）をとして指定する -->
+      <input data-hello-target="name" type="text">
+
+      <!-- アクションとイベントを紐付ける -->
+      <!-- click時にhelloコントローラーのgreetアクションを実行する -->
+      <button data-action="click->hello#greet">Greet</button>
+    </div>
     <%= yield %>
   </body>
 </html>
