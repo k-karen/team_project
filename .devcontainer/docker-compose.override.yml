@@ -1,5 +1,0 @@
-version: '3'
-services:
-  web:
-    # 待ってるだけのコンテナを立ち上げる
-    command: bash -c "rm /app/tmp/pids/server.pid; bundle && yarn && bundle exec rails db:migrate && bin/dev && pkill -f 'rails' && rm /app/tmp/pids/server.pid; "

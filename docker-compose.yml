@@ -18,6 +18,7 @@ services:
     tty: true
     ports:
       - "3000:3000"
+      - "12345:12345"
 
 volumes:
   bundle_data:
