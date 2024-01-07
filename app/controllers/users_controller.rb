@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to(login_path, notice: "User was successfully created. Please check your email to activate.")
     else
-      flash.now[:danger] = "Invalid email/password combination"
+      flash.now[:alert] = "Invalid email/password combination"
       render(:new)
     end
   end
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = "Profile updated"
+      flash[:notice] = "Profile updated"
       redirect_to(@user)
     else
       render(:edit)
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   # ログイン済みユーザーかどうか確認
   def logged_in_user
     unless logged_in?
-      flash[:danger] = "Please log in."
+      flash[:alert] = "Please log in."
       redirect_to(login_url, status: :see_other)
     end
   end
