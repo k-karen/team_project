@@ -12,9 +12,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      reset_session
-      auto_login(@user)
-      redirect_to(root_path, notice: "User was successfully created. Please check your email to activate.")
+      redirect_to(login_path, notice: "User was successfully created. Please check your email to activate.")
     else
       render(:new)
     end
