@@ -1,3 +1,12 @@
 <p id="<%= dom_id message %>">
-  <%= message.created_at.to_s(:short) %>: <%= message.content %>
-</p> 
+  
+  <% if message.user %>
+    <strong><%= message.user.username %></strong>:
+  <% else %>
+    <strong>unknown_user</strong>:
+  <% end %>
+
+  <%= message.created_at.to_s(:short) %>
+  <br>
+  <%= message.content %>
+</p>
