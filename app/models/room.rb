@@ -1,4 +1,5 @@
 class Room < ApplicationRecord
-  has_many :messages
+  # Roomを消したときに、そのRoomに紐づくMessageも一緒に消えるようにする
+  has_many :messages, dependent: :destroy
   broadcasts
 end

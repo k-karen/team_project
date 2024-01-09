@@ -5,7 +5,7 @@ class UserMailer < ApplicationMailer
 
   def activation_needed_email(user)
     @user = user
-    @url  = "http://localhost:3000/users/#{user.activation_token}/activate"
+    @url  = "http://localhost:3000/activate?token=#{@user.activation_token}"
     mail(to: user.email, subject: "Welcome to My Awesome Site")
   end
 
