@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_04_092723) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_09_000002) do
   create_table "messages", force: :cascade do |t|
     t.integer "room_id", null: false
     t.text "content"
@@ -25,6 +25,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_04_092723) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_profiles", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "age"
+    t.text "biography"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
@@ -35,8 +43,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_04_092723) do
     t.string "activation_state"
     t.string "activation_token"
     t.datetime "activation_token_expires_at"
-    t.integer "age"
-    t.string "biography"
     t.index ["activation_token"], name: "index_users_on_activation_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
