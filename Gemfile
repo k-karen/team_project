@@ -84,3 +84,5 @@ end
 gem "sorcery", "~> 0.16.5"
 
 gem "cssbundling-rails", "~> 1.3"
+
+gem "faker", "~> 3.2"
