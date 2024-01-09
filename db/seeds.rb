@@ -8,9 +8,9 @@ require "faker"
 users = []
 
 # ユーザーの生成
-20.times do
+20.times do |i|
   user = User.create(
-    email: Faker::Internet.unique.email(domain: "example.com"),
+    email: "sample_#{i}@example.com",
     password: "aiit-password",
     username: Faker::Internet.unique.username,
     age: rand(18..100),
