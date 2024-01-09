@@ -7,5 +7,7 @@ fi
 
 # Default to port 3000 if not specified
 export PORT="${PORT:-3000}"
+export RUBY_DEBUG_OPEN="true"
+export RUBY_DEBUG_PORT="12345"
 
 exec foreman start -f Procfile.dev "$@"

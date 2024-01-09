@@ -2,6 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Attach to Rails Server",
+      "type": "rdbg",
+      "request": "attach",
+      "debugPort": "12345",
+      "rdbgPath": "bundle exec rdbg",
+    },
+    {
       "type": "rdbg",
       "name": "Run rails server",
       "rdbgPath": "bundle exec rdbg",
