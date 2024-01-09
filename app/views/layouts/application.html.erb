@@ -34,14 +34,6 @@
         </ul>
       </div>
     </nav>
-    <div data-controller="hello">
-      <!-- <input>をターゲット（操作対象のDOM）をとして指定する -->
-      <input data-hello-target="name" type="text">
-
-      <!-- アクションとイベントを紐付ける -->
-      <!-- click時にhelloコントローラーのgreetアクションを実行する -->
-      <button data-action="click->hello#greet">Greet</button>
-    </div>
     <%= yield %>
   </body>
 </html>
