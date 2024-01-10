@@ -59,5 +59,4 @@ class UsersController < ApplicationController
       redirect_to(login_url, status: :see_other)
     end
   end
-
 end
