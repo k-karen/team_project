@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  rails:
+    container_name: prod_g2_app
+    build:
+      context: .
+      dockerfile: ./dockers/rails/Dockerfile
+    image: g2_app-rails:3.2
+    volumes:
+      - .:/app
+      - bundle_data:/usr/local/bundle
+      - tmp-data:/app/tmp
+      - public-data:/app/public
+    environment:
+      NOTHING: "NOTHING"
+      RAILS_ENV: production
+      PORT:
+    command: >
+      bash -c "rm /app/tmp/pids/server.pid; bundle && bundle exec rails assets:precompile && bundle exec rails db:migrate && bundle exec pumactl start"
+    stdin_open: true
+    tty: true
+    ports:
+      - "3000:3000"
+
+  web:
+    build:
+      context: dockers/nginx
+    volumes:
+      - public-data:/app/public
+      - tmp-data:/app/tmp
+    ports:
+      - 80:80
+    depends_on:
+      - rails
+
+volumes:
+  bundle_data:
+  tmp-data:
+  public-data:
