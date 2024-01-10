@@ -15,7 +15,6 @@ services:
     environment:
       NOTHING: "NOTHING"
       RAILS_ENV: production
-      PORT:
     command: >
       bash -c "rm /app/tmp/pids/server.pid; bundle && bundle exec rails assets:precompile && bundle exec rails db:migrate && bundle exec pumactl start"
     stdin_open: true
