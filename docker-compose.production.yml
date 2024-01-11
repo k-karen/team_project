@@ -17,19 +17,21 @@ services:
       RAILS_ENV: production
     command: >
       bash -c "rm /app/tmp/pids/server.pid; bundle && bundle exec rails assets:precompile && bundle exec rails db:migrate && bundle exec pumactl start"
-    stdin_open: true
-    tty: true
     ports:
       - "3000:3000"
 
   web:
+    container_name: prod_g2_web
     build:
       context: dockers/nginx
     volumes:
+      - /etc/letsencrypt/live/REPLACE_ME_BY_DOMAIN/fullchain.pem:/etc/letsencrypt/live/REPLACE_ME_BY_DOMAIN/fullchain.pem
+      - /etc/letsencrypt/live/REPLACE_ME_BY_DOMAIN/privkey.pem:/etc/letsencrypt/live/REPLACE_ME_BY_DOMAIN/privkey.pem
       - public-data:/app/public
       - tmp-data:/app/tmp
     ports:
       - 80:80
+      - 443:443
     depends_on:
       - rails
 

@@ -17,3 +17,31 @@ http://localhost:3000/
 http://localhost:3000/sign_up
 ログイン画面
 http://localhost:3000/login
+
+## デプロイ手順
+### EC2構築時
+- sshのportを変更してセキュリティグループも変更しておく(ssh port, 443, 80のinboundを受けるようにする)  
+- docker, docker-composeの導入  
+- certbotなどで証明書準備  
+- WEB_DOMAINにdomainを吐き出す  
+- git pullして後述の設定更新  
+
+
+### 更新時
+EC2に入ってプロジェクトのディレクトリで`git pull`して  
+```
+echo $WEB_DOMAIN
+```
+を確認しておく。  
+
+以下を実行して設定を更新しておく
+```bash
+sed -i "s/REPLACE_ME_BY_DOMAIN/$WEB_DOMAIN" docker-compose.production.yml
+sed -i "s/REPLACE_ME_BY_DOMAIN/$WEB_DOMAIN" dockers/nginx/nginx.conf
+```
+
+実行時
+```bash
+docker-compose --file docker-compose.production.yml down
+docker-compose --file docker-compose.production.yml up
+```
