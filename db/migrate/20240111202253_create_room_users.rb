@@ -6,5 +6,10 @@ class CreateRoomUsers < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+
+    # roomとuserの組み合わせをユニークに
+    add_index :room_users, :room_id
+    add_index :room_users, :user_id
+    add_index :room_users, [:room_id, :user_id], unique: true
   end
 end
