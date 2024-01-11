@@ -36,8 +36,8 @@ echo $WEB_DOMAIN
 
 以下を実行して設定を更新しておく
 ```bash
-sed -i "s/REPLACE_ME_BY_DOMAIN/$WEB_DOMAIN" docker-compose.production.yml
-sed -i "s/REPLACE_ME_BY_DOMAIN/$WEB_DOMAIN" dockers/nginx/nginx.conf
+sed -i "s/REPLACE_ME_BY_DOMAIN/$WEB_DOMAIN/g" docker-compose.production.yml
+sed -i "s/REPLACE_ME_BY_DOMAIN/$WEB_DOMAIN/g" dockers/nginx/nginx.conf
 ```
 
 実行時
