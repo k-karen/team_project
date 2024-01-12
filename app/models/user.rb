@@ -12,6 +12,5 @@ class User < ApplicationRecord
   has_many :friends, through: :friendships, source: :friend
   has_many :inverse_friends, through: :inverse_friendships, source: :user
 
-  has_many :room_users
-  has_many :room, through: :room_users
+  has_and_belongs_to_many :rooms
 end
