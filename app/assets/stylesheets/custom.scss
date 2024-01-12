@@ -65,3 +65,31 @@ input, textarea, select, .uneditable-input {
 input {
   height: auto !important;
 }
+
+/* homeページ room */
+.icon-circle{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.icon-circle img{
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+#latest-message{
+  color: #a7a7a7;
+}
+
+.roomLink{
+  text-decoration: none;
+}
