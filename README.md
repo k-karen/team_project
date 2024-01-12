@@ -3,7 +3,7 @@
 
 ## 各コマンドの実行方法
 `docker exec -it g2_app bash` でrailsが動いてるコンテナに入れます。  
-コンテナ内部で `bin/rails g model Hoge` とかすればｒailsコマンドが実行できます。
+コンテナ内部で `bin/rails g model Hoge` とかすればrailsコマンドが実行できます。
 
 ## debug  
 ここにVSCodeでのデバッグについて記しました。  

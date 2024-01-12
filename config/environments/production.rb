@@ -88,6 +88,19 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
+  web_domain = ENV.fetch('WEB_DOMAIN', nil)
+  host_setting = { host: web_domain, protocol: 'https' }
+  config.action_controller.default_url_options = host_setting
+  Rails.application.routes.default_url_options = host_setting
+
+  mail_domain = ENV.fetch('MAIL_DOMAIN', nil)
+  config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = host_setting
+
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :aws_sdk
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end
+

@@ -13,8 +13,14 @@ services:
       - tmp-data:/app/tmp
       - public-data:/app/public
     environment:
-      NOTHING: "NOTHING"
       RAILS_ENV: production
+      # inherited from host environment
+      WEB_DOMAIN:
+      MAIL_DOMAIN:
+      SMTP_PORT:
+      SMTP_SERVER:
+      SMTP_LOGIN:
+      SMTP_PASSWORD:
     command: >
       bash -c "rm /app/tmp/pids/server.pid; bundle && bundle exec rails assets:precompile && bundle exec rails db:migrate && bundle exec pumactl start"
     ports:
