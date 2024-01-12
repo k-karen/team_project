@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_11_202253) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_11_202254) do
   create_table "friendships", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "friend_id", null: false
@@ -32,20 +32,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_11_202253) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "room_users", force: :cascade do |t|
-    t.integer "room_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["room_id", "user_id"], name: "index_room_users_on_room_id_and_user_id", unique: true
-    t.index ["room_id"], name: "index_room_users_on_room_id"
-    t.index ["user_id"], name: "index_room_users_on_user_id"
-  end
-
   create_table "rooms", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms_users", force: :cascade do |t|
+    t.integer "room_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id", "user_id"], name: "index_rooms_users_on_room_id_and_user_id", unique: true
+    t.index ["room_id"], name: "index_rooms_users_on_room_id"
+    t.index ["user_id"], name: "index_rooms_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
