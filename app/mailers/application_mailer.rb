@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "no-reply@#{ENV.fetch("MAIL_DOMAIN", "example.com")}"
   layout "mailer"
 end

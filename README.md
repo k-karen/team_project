@@ -3,7 +3,7 @@
 
 ## 各コマンドの実行方法
 `docker exec -it g2_app bash` でrailsが動いてるコンテナに入れます。  
-コンテナ内部で `bin/rails g model Hoge` とかすればｒailsコマンドが実行できます。
+コンテナ内部で `bin/rails g model Hoge` とかすればrailsコマンドが実行できます。
 
 ## debug  
 ここにVSCodeでのデバッグについて記しました。  
@@ -17,3 +17,25 @@ http://localhost:3000/
 http://localhost:3000/sign_up
 ログイン画面
 http://localhost:3000/login
+
+## デプロイ手順
+### EC2構築時
+- sshのportを変更してセキュリティグループも変更しておく(ssh port, 443, 80のinboundを受けるようにする)  
+- docker, docker-composeの導入  
+- certbotなどで証明書準備  
+- WEB_DOMAINにdomainを吐き出す  
+- git pullして後述の設定更新  
+
+
+### 更新時
+```bash
+cd /var/www/team_project/
+# gitを操作してデプロイしたいブランチへ
+# e.g.
+# 最新mainを確認したい場合
+# git checkout main
+# git pull
+./update_config.sh
+docker-compose --file docker-compose.production.yml down
+docker-compose --file docker-compose.production.yml -d up
+```

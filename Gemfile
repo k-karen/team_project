@@ -59,6 +59,7 @@ group :development, :test do
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
   gem "solargraph"
+  gem "faker", "~> 3.2"
 end
 
 group :development do
@@ -85,4 +86,4 @@ gem "sorcery", "~> 0.16.5"
 
 gem "cssbundling-rails", "~> 1.3"
 
-gem "faker", "~> 3.2"
+gem "aws-sdk-rails", "~> 3.9"

@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
 class UserMailer < ApplicationMailer
-  default from: "from@example.com"
-
   def activation_needed_email(user)
     @user = user
-    @url  = "http://localhost:3000/activate?token=#{@user.activation_token}"
+    @url = activate_url(token: @user.activation_token)
     mail(to: user.email, subject: "Welcome to My Awesome Site")
   end
 

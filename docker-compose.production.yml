@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  rails:
+    container_name: prod_g2_app
+    build:
+      context: .
+      dockerfile: ./dockers/rails/Dockerfile
+    image: g2_app-rails:3.2
+    volumes:
+      - .:/app
+      - bundle_data:/usr/local/bundle
+      - tmp-data:/app/tmp
+      - public-data:/app/public
+    environment:
+      RAILS_ENV: production
+      # inherited from host environment
+      WEB_DOMAIN:
+      MAIL_DOMAIN:
+      SMTP_PORT:
+      SMTP_SERVER:
+      SMTP_LOGIN:
+      SMTP_PASSWORD:
+    command: >
+      bash -c "rm /app/tmp/pids/server.pid; bundle && bundle exec rails assets:precompile && bundle exec rails db:migrate && bundle exec pumactl start"
+    ports:
+      - "3000:3000"
+
+  web:
+    container_name: prod_g2_web
+    build:
+      context: dockers/nginx
+    volumes:
+      - /etc/letsencrypt/live/REPLACE_ME_BY_DOMAIN/fullchain.pem:/etc/letsencrypt/live/REPLACE_ME_BY_DOMAIN/fullchain.pem
+      - /etc/letsencrypt/live/REPLACE_ME_BY_DOMAIN/privkey.pem:/etc/letsencrypt/live/REPLACE_ME_BY_DOMAIN/privkey.pem
+      - public-data:/app/public
+      - tmp-data:/app/tmp
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - rails
+
+volumes:
+  bundle_data:
+  tmp-data:
+  public-data:
