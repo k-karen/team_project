@@ -28,20 +28,14 @@ http://localhost:3000/login
 
 
 ### 更新時
-EC2に入ってプロジェクトのディレクトリで`git pull`して  
-```
-echo $WEB_DOMAIN
-```
-を確認しておく。  
-
-以下を実行して設定を更新しておく
 ```bash
-sed -i "s/REPLACE_ME_BY_DOMAIN/$WEB_DOMAIN/g" docker-compose.production.yml
-sed -i "s/REPLACE_ME_BY_DOMAIN/$WEB_DOMAIN/g" dockers/nginx/nginx.conf
-```
-
-実行時
-```bash
+cd /var/www/team_project/
+# gitを操作してデプロイしたいブランチへ
+# e.g.
+# 最新mainを確認したい場合
+# git checkout main
+# git pull
+./update_config.sh
 docker-compose --file docker-compose.production.yml down
-docker-compose --file docker-compose.production.yml up
+docker-compose --file docker-compose.production.yml -d up
 ```
