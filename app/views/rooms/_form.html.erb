@@ -10,13 +10,16 @@
       </ul>
     </div>
   <% end %>
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control'%>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
+    <% current_user.friendships.each do |friendship| %>
+      <% friend = friendship.friend %>
+      <div>
+        <%= form.check_box friend %>
+        <%= form.label friend, friend.username %>
+      </div>
+    <% end %>
 
-  <div>
-    <%= form.submit %>
-  </div>
+    <%= form.submit "Create Room", class: "btn btn-primary"  %>
 <% end %>
