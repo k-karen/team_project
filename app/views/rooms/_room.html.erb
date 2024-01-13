@@ -1,7 +1,14 @@
-<div id="<%= dom_id room %>">
-  <p>
-    <strong>Name:</strong>
-    <%= room.name %>
-  </p>
-
+<div class="card m-2 p-2 d-flex flex-row" id="<%= dom_id room %>">
+  <div class="card-img-div pt-2">
+    <figure class="icon-circle"><img src="https://picsum.photos/id/238/540/540" alt="roomicon"></figure>  
+  </div>
+  <div class="card-body">
+    <h4>
+      <strong>RoomName:</strong>
+      <%= room.name %>
+    </h4>
+    <h4 id="latest-message">
+      This is some text within a card body.
+    </h4>
+  </div>
 </div>
