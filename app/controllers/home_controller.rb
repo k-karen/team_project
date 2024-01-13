@@ -2,6 +2,6 @@
 
 class HomeController < ApplicationController
   def index
-    @rooms = Room.all # TODO: 自分に紐づいているroomのみを表示する
+    @rooms = current_user.rooms
   end
 end

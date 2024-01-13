@@ -23,7 +23,8 @@ class RoomsController < ApplicationController
 
   # POST /rooms or /rooms.json
   def create
-    @room = Room.new(room_params)
+    # TODO: 数人でroomを作れるようにする　一旦ログインしているユーザーのみに紐付ける
+    @room = current_user.rooms.create(room_params)
 
     respond_to do |format|
       if @room.save
