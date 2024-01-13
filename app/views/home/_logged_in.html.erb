@@ -12,6 +12,7 @@
   </aside>
   <div class="col-md-8">
     <h1>Rooms</h1>
+    <%= link_to "New room", new_room_path %>
     <div id="rooms">
       <% @rooms.each do |room| %>
           <%= link_to room, class: "roomLink" do%>
