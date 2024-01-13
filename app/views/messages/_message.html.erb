@@ -1,10 +1,7 @@
 <p id="<%= dom_id message %>">
   
-  <% if message.user %>
-    <strong><%= message.user.username %></strong>:
-  <% else %>
-    <strong>unknown_user</strong>:
-  <% end %>
+  <!-- ユーザー名が表示される -->
+  <strong><%= message.user.username %></strong>:
 
   <%= message.created_at.to_s(:short) %>
   <br>
