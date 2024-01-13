@@ -1,9 +1,5 @@
-<p id="<%= dom_id message %>">
-  
-  <!-- ユーザー名が表示される -->
-  <strong><%= message.user.username %></strong>:
-
-  <%= message.created_at.to_s(:short) %>
-  <br>
-  <%= message.content %>
-</p>
+<div class="<%= 'message-sent' if message.user == current_user %> <%= 'message-received' unless message.user == current_user %>">
+  <strong><%= message.user.username %></strong>
+  <span class="message_timestamp"><%= message.created_at.strftime('%m/%d %a %H:%M') %></span>
+  <p class="card-text"><%= message.content %></p>
+</div>
