@@ -22,5 +22,9 @@ Rails.application.routes.draw do
   get 'users/profile/edit', to: 'users#edit', as: :edit_user_profile
   patch 'users/profile', to: 'users#update', as: :update_user_profile
   
-  resources :users
+  resources :users do
+    collection do
+      resources :friendships, only: [:index, :create, :destroy]
+    end
+  end
 end
