@@ -15,7 +15,10 @@
 
 
   <%= form.collection_check_boxes(:user_ids, current_user.friends, :id, :username) do |user| %>
-    <%= user.label { user.check_box + user.text } %>
+    <%= user.label class: "d-block pb-1" do %>
+      <%= user.check_box %>
+      <%= user.text %>
+    <% end %>
   <% end %>
   <%= form.submit "Create Room", class: "btn btn-primary"  %>
 <% end %>
