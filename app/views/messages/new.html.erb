@@ -2,10 +2,12 @@
 
 <%= turbo_frame_tag "new_message", target: "_top" do %>
   <%= form_with(model: [ @message.room, @message ], data: { controller: "form", action: "turbo:submit-end->form#reset" }) do |form| %>
-    <div class="field">
-      <%= form.text_field :content %>
-      <%= form.submit "Send" %>
+  <div class="input-group">
+    <%= form.text_field :content, class: "form-control", placeholder: "Type a message..." %>
+    <div class="input-group-append">
+      <%= form.submit "send", class: "btn btn-primary" %>
     </div>
+  </div>
   <% end %>
 <% end %>
 
