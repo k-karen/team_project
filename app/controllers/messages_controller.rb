@@ -2,6 +2,7 @@
 
 class MessagesController < ApplicationController
   before_action :set_room, only: [:new, :create]
+  before_action :require_login
 
   def new
     @message = @room.messages.new
