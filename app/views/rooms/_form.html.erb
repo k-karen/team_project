@@ -13,13 +13,12 @@
     <%= form.label :name %>
     <%= form.text_field :name, class: 'form-control'%>
 
-    <% current_user.friendships.each do |friendship| %>
-      <% friend = friendship.friend %>
-      <div>
-        <%= form.check_box friend %>
-        <%= form.label friend, friend.username %>
-      </div>
-    <% end %>
 
-    <%= form.submit "Create Room", class: "btn btn-primary"  %>
+  <%= form.collection_check_boxes(:user_ids, current_user.friends, :id, :username) do |user| %>
+    <%= user.label class: "d-block pb-1" do %>
+      <%= user.check_box %>
+      <%= user.text %>
+    <% end %>
+  <% end %>
+  <%= form.submit "Create Room", class: "btn btn-primary"  %>
 <% end %>
