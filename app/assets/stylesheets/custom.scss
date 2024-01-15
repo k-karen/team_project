@@ -55,7 +55,7 @@ p {
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
+input[type=text], input[type=password], input[type=email], input[type=submit], textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;

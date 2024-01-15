@@ -10,13 +10,15 @@
       </ul>
     </div>
   <% end %>
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control'%>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+  <%= form.collection_check_boxes(:user_ids, current_user.friends, :id, :username) do |user| %>
+    <%= user.label class: "d-block pb-1" do %>
+      <%= user.check_box %>
+      <%= user.text %>
+    <% end %>
+  <% end %>
+  <%= form.submit "Create Room", class: "btn btn-primary"  %>
 <% end %>

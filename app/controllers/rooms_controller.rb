@@ -24,7 +24,9 @@ class RoomsController < ApplicationController
   # POST /rooms or /rooms.json
   def create
     # TODO: 数人でroomを作れるようにする　一旦ログインしているユーザーのみに紐付ける
-    @room = current_user.rooms.create(room_params)
+    @room = Room.new(room_params)
+    @users = current_user.friends.where(id: room_user_params[:user_ids])
+    @room.users.append([current_user, *@users])
 
     respond_to do |format|
       if @room.save
@@ -70,5 +72,9 @@ class RoomsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def room_params
     params.require(:room).permit(:name)
+  end
+
+  def room_user_params
+    params.require(:room).permit(user_ids: [])
   end
 end
