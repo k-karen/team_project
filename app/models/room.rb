@@ -8,4 +8,6 @@ class Room < ApplicationRecord
   broadcasts
 
   has_and_belongs_to_many :users
+
+  after_create_commit { broadcast_prepend_to "rooms" }
 end
