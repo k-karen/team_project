@@ -1,5 +1,5 @@
 <%= turbo_frame_tag room do %>
-  <%= link_to room, class: "roomLink" do %>
+  <%= link_to room, data: { turbo_frame: "_top" }, class: "roomLink" do %>
     <div class="card m-2 p-2 d-flex flex-row">
       <div class="card-img-div pt-2">
         <figure class="icon-circle"><img src="https://picsum.photos/id/238/540/540" alt="roomicon"></figure>  

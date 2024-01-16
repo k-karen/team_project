@@ -17,7 +17,6 @@
     <h1>Rooms</h1>
     <%= link_to "New room", new_room_path %>
     <%= turbo_frame_tag "rooms" do %>
-      <!-- TODO: リンクを動かせるようにする -->
       <% @rooms.each do |room| %>
         <%= render 'rooms/room', room: room %>
       <% end %>
