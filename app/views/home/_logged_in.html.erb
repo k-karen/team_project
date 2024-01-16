@@ -16,15 +16,12 @@
   <div class="col-md-8">
     <h1>Rooms</h1>
     <%= link_to "New room", new_room_path %>
-    <div id="rooms">
-      <%= turbo_frame_tag "rooms" do %>
-        <% @rooms.each do |room| %>
-          <%= link_to room, class: "roomLink" do %>
-            <%= render 'rooms/room', room: room %>
-          <% end %>
-        <% end %>
+    <%= turbo_frame_tag "rooms" do %>
+      <!-- TODO: リンクを動かせるようにする -->
+      <% @rooms.each do |room| %>
+        <%= render 'rooms/room', room: room %>
       <% end %>
-    </div>
+    <% end %>
   </div>
 </div>
 
