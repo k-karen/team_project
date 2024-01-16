@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     @rooms = if current_user
       current_user.rooms
         .left_joins(:messages)
-        .group('rooms.id')
+        .group("rooms.id")
         .order('max(messages.created_at) DESC, rooms.id desc')
     else
       []
