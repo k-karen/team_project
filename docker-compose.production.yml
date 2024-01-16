@@ -25,7 +25,10 @@ services:
       bash -c "rm /app/tmp/pids/server.pid; bundle && bundle exec rails assets:precompile && bundle exec rails db:migrate && bundle exec pumactl start"
     ports:
       - "3000:3000"
-
+    depends_on:
+      - redis
+    networks:
+      - net
   web:
     container_name: prod_g2_web
     build:
@@ -40,8 +43,19 @@ services:
       - 443:443
     depends_on:
       - rails
+    networks:
+      - net
+
+  redis:
+    container_name: prod_g2_redis
+    image: "redis:alpine"
+    networks:
+      - net
 
 volumes:
   bundle_data:
   tmp-data:
   public-data:
+
+networks:
+  net:
