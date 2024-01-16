@@ -1,0 +1,15 @@
+<h1>現在の友達</h1>
+
+<%= form_with url: friendships_path, method: :post, data: { turbo_frame: "new_friend" } do |form| %>
+  <div class="mb-3">
+    <%= form.label :username, class: 'form-label' %>
+    <%= form.text_field :username, class: 'form-control', required: true %>
+  </div>
+  <%= form.submit '友だち追加', class: 'btn btn-primary' %>
+<% end %>
+
+<div id="friends">
+  <%= turbo_frame_tag "friends", data: { turbo_action: :advance } do %>
+    <%= render 'friends', friends: @friends %>
+  <% end %>
+</div>
