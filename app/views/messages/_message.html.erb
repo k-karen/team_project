@@ -1,4 +1,4 @@
-<div class="<%= 'message-sent' if message.user == current_user %> <%= 'message-received' unless message.user == current_user %>">
+<div class="<%= "message-#{message.user_id}"%> message_box">
   <strong><%= message.user.username %></strong>
   <span class="message_timestamp"><%= message.created_at.strftime('%m/%d %a %H:%M') %></span>
   <%= simple_format(message.content, {}, wrapper_tag: :div, class: "card-text") %>
