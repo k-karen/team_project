@@ -2,6 +2,7 @@
 
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy]
+  before_action :require_login
 
   # GET /rooms or /rooms.json
   def index
@@ -23,7 +24,7 @@ class RoomsController < ApplicationController
 
   # POST /rooms or /rooms.json
   def create
-    # TODO: 数人でroomを作れるようにする　一旦ログインしているユーザーのみに紐付ける
+    # 選択されたフレンドと自分を紐づけてroomを作る
     @room = Room.new(room_params)
     @users = current_user.friends.where(id: room_user_params[:user_ids])
     @room.users.append([current_user, *@users])

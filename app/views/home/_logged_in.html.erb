@@ -1,3 +1,5 @@
+<%= turbo_stream_from "rooms" %>
+
 <div class="row p-3">
   <aside class="col-md-4 card p-3" style="height: 200px;">
     <section class="user_info d-flex flex-row">
@@ -15,10 +17,12 @@
     <h1>Rooms</h1>
     <%= link_to "New room", new_room_path %>
     <div id="rooms">
-      <% @rooms.each do |room| %>
-          <%= link_to room, class: "roomLink" do%>
-            <%= render room %>
+      <%= turbo_frame_tag "rooms" do %>
+        <% @rooms.each do |room| %>
+          <%= link_to room, class: "roomLink" do %>
+            <%= render 'rooms/room', room: room %>
           <% end %>
+        <% end %>
       <% end %>
     </div>
   </div>
