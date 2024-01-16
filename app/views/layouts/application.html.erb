@@ -12,7 +12,7 @@
     <%= javascript_include_tag "turbo", type: "module" %>
   </head>
   <body>
-    <nav class="navbar navbar-expand navbar-light bg-light sticky-top">
+    <nav class="navbar navbar-expand navbar-light bg-light sticky-top border-bottom">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">g2</a>
         <ul class="navbar-nav ms-auto">
@@ -34,6 +34,7 @@
         </ul>
       </div>
     </nav>
+    <br>
     <div class="container">
       <%= render 'layouts/flash_message' %>
       <%= yield %>
