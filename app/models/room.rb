@@ -6,7 +6,7 @@ class Room < ApplicationRecord
   # Roomを消したときに、そのRoomに紐づくMessageも一緒に消えるようにする
   has_many :messages, dependent: :destroy
   # REVIEW: broadcast_prepend_toを動かすために、コメントアウトしたが、エラーがおきるかも
-  #broadcasts
+  # broadcasts
 
   has_and_belongs_to_many :users
 
