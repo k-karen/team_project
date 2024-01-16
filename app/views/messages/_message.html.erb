@@ -1,12 +1,5 @@
-<p id="<%= dom_id message %>">
-  
-  <% if message.user %>
-    <strong><%= message.user.username %></strong>:
-  <% else %>
-    <strong>unknown_user</strong>:
-  <% end %>
-
-  <%= message.created_at.to_s(:short) %>
-  <br>
-  <%= message.content %>
-</p>
+<div class="<%= 'message-sent' if message.user == current_user %> <%= 'message-received' unless message.user == current_user %>">
+  <strong><%= message.user.username %></strong>
+  <span class="message_timestamp"><%= message.created_at.strftime('%m/%d %a %H:%M') %></span>
+  <%= simple_format(message.content, {}, wrapper_tag: :div, class: "card-text") %>
+</div>

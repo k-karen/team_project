@@ -2,21 +2,22 @@
 
 <%= turbo_stream_from @room %>
 
-<%= turbo_frame_tag "room" do %>
-  <p>
-    <strong>Name:</strong>
-    <%= @room.name %>
-  </p>
-  <%= render @room %>
+<!-- ルームアクション -->
+<div id="room-actions" class="mb-3 text-right">
+  <%= turbo_frame_tag "room" do %>
+    <%= render @room %>
 
-  <%= link_to 'Edit', edit_room_path(@room) %> |
-  <%= link_to 'Back', rooms_path, "data-turbo-frame": "_top" %>
+    <%= link_to 'Edit', edit_room_path(@room), class: "btn btn-outline-primary btn-sm" %>
+    <%= link_to 'Back', root_path, class: "btn btn-outline-secondary btn-sm", "data-turbo-frame": "_top" %>
+    <%= button_to "Destroy this room", @room, method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" } %>
+  <% end %>
+</div>
 
-  <%= button_to "Destroy this room", @room, method: :delete %>
-<% end %>
-
-<div id="messages">
+<!-- メッセージリスト -->
+<div id="messages" class="border rounded messages-container">
   <%= render @room.messages %>
 </div>
 
+
+<!-- 新規メッセージ入力 -->
 <%= turbo_frame_tag "new_message", src: new_room_message_path(@room), target: "_top" %>

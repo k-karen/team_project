@@ -93,3 +93,55 @@ input {
 .roomLink{
   text-decoration: none;
 }
+
+/* messages */
+.message-sent {
+  background-color: hwb(120deg 30.02% 25.47%);
+  border-radius: 7.5px;
+  margin-bottom: 8px;
+  padding: 6px 12px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.message-received {
+  background-color: #ffffff;
+  border-radius: 7.5px;
+  margin-bottom: 8px;
+  padding: 6px 12px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.message-sent,
+.message-received {
+  display: block;
+  font-size: 1em;
+  margin-top: 5px;
+  text-align: right;
+}
+
+.message_timestamp {
+  font-size: 0.8em;
+  margin-top: 5px;
+  text-align: right;
+  color: #404040;
+}
+
+.message-sent {
+  float: right;
+  clear: both;
+}
+
+.message-received {
+  float: left;
+  clear: both;
+}
+
+/* 配置コンテンツ次第でheightの調整が必要になる。 */
+.messages-container {
+  height: calc(100vh - 360px);
+  overflow-y: auto;
+  background-color: #f8f9fa; 
+}
+
