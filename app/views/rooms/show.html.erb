@@ -21,3 +21,27 @@
 
 <!-- 新規メッセージ入力 -->
 <%= turbo_frame_tag "new_message", src: new_room_message_path(@room), target: "_top" %>
+
+<style>
+.message-<%= current_user.id %> {
+  background-color: hwb(120deg 30.02% 25.47%);
+  border-radius: 7.5px;
+  margin-bottom: 8px;
+  padding: 6px 12px;
+  max-width: 80%;
+  word-wrap: break-word;
+  float: right;
+  clear: both;
+}
+
+.message_box:not(.message-<%= current_user.id %>) {
+  background-color: #ffffff;
+  border-radius: 7.5px;
+  margin-bottom: 8px;
+  padding: 6px 12px;
+  max-width: 80%;
+  float: left;
+  clear: both;
+  word-wrap: break-word;
+}
+</style>
