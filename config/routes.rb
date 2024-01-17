@@ -28,4 +28,6 @@ Rails.application.routes.draw do
       resources :friendships, only: [:index, :create, :destroy]
     end
   end
+
+  match '*not_found_path' => 'home#not_found', via: :all
 end
