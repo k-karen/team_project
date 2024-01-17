@@ -16,4 +16,8 @@ class HomeController < ApplicationController
   def current_rev
     render(json: { current_rev: ENV.fetch("CURRENT_REVISION", nil) })
   end
+
+  def not_found
+    render(json: { path: params[:not_found_path] }, status: :not_found)
+  end
 end
