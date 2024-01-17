@@ -11,4 +11,9 @@ class HomeController < ApplicationController
       []
     end
   end
+
+  # デプロイ済みのrevisionを確認するAPIです
+  def current_rev
+    render(json: { current_rev: ENV.fetch("CURRENT_REVISION", nil) })
+  end
 end
