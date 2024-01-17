@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
+  root 'home#index'
+  get 'current_rev', to: 'home#current_rev'
+  get 'test', to: 'application#test'
+
+  mount(LetterOpenerWeb::Engine, at: '/letter_opener') if Rails.env.development?
+
   resources :rooms do
     resources :messages
   end
-  
-  if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: '/letter_opener'
-  end
 
-  root 'home#index'
-  get 'test', to: 'application#test'
+  
 
   # around login, sign_up, logout
   get 'login', to: 'sessions#new', as: :login

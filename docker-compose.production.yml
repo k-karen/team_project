@@ -21,6 +21,7 @@ services:
       SMTP_SERVER:
       SMTP_LOGIN:
       SMTP_PASSWORD:
+      CURRENT_REVISION:
     command: >
       bash -c "rm /app/tmp/pids/server.pid; bundle && bundle exec rails assets:precompile && bundle exec rails db:migrate && bundle exec pumactl start"
     ports:
