@@ -3,6 +3,6 @@
     <h1>Welcome, <%= current_user.email %></h1>
     <%= render 'home/logged_in' %>
   <% else %>
-    <%= link_to 'Login', login_path %> or <%= link_to 'Sign Up', sign_up_path %>
+    <%= render 'home/not_logged_in' %>
   <%end%>
 </div>
