@@ -31,6 +31,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    # TODO: biograpy等の編集と、パスワード等の変更を分ける
     @user = current_user
   end
 

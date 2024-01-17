@@ -8,4 +8,11 @@ module UsersHelper
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
     image_tag(gravatar_url, alt: user.username, class: "gravatar")
   end
+
+  # 引数で与えられたユーザーの生年月日を表示する
+  def display_birthdate(user)
+    userbirthdate_year = user.age&.years
+    birthdate = userbirthdate_year&.ago
+    birthdate&.strftime("%Y/%m/%d")
+  end
 end
