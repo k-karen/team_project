@@ -9,7 +9,7 @@
 
     <%= link_to 'Edit', edit_room_path(@room), class: "btn btn-outline-primary btn-sm" %>
     <%= link_to 'Back', root_path, class: "btn btn-outline-secondary btn-sm", "data-turbo-frame": "_top" %>
-    <%= button_to "Destroy this room", @room, method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" } %>
+    <%= button_to "Destroy this room", @room, method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？", turbo: false  } %>
   <% end %>
 </div>
 
