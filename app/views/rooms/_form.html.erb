@@ -14,13 +14,17 @@
       <%= form.label :name %>
       <%= form.text_field :name, class: 'form-control'%>
 
-
-    <%= form.collection_check_boxes(:user_ids, current_user.friends, :id, :username) do |user| %>
-      <%= user.label class: "d-block pb-1" do %>
-        <%= user.check_box %>
-        <%= user.text %>
+    <div class="btn-group btn-group-vertical" data-toggle="buttons">
+      <%= form.collection_check_boxes(:user_ids, current_user.friends, :id, :username) do |user| %>
+        <label class="btn" for="room_user_ids_<%= user.object.id %>">
+          <%= user.check_box %>
+          <i class="bi bi-app"></i>
+          <i class="bi bi-check2-square"></i>
+          <span><%= user.text %></span>
+        </label>
       <% end %>
-    <% end %>
+    </div>
+    
     <%= form.submit "Create Room", class: "btn btn-primary"  %>
   <% end %>
 <% end %>

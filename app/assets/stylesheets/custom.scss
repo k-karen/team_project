@@ -185,3 +185,71 @@ animation :infinity-scroll-left 95s infinite linear 0.5s both;
 .friendLink{
   text-decoration: none;
 }
+
+/* create room page */
+
+label.btn span {
+  font-size: 1.5em ;
+}
+
+label input[type=checkbox] {
+  // デフォルトのチェックボックスを非表示にする
+  opacity: 0;
+  position: absolute;
+  top: -9999px;
+}
+
+label input[type=checkbox] ~ i.bi.bi-check2-square{
+  display: none;
+}
+
+label input[type=checkbox] ~ i.bi.bi-app{
+  color: #c8c8c8;
+  display: inline;
+  font-size: 1.5em;
+}
+
+label input[type=checkbox]:checked ~ i.bi.bi-app{
+  display: none;
+}
+
+label input[type=checkbox]:checked ~ i.bi.bi-check2-square{
+  color: #0b5ed7;
+  display: inline;
+  font-size: 1.5em;
+}
+
+label:hover input[type=checkbox] ~ i.bi {
+  color: #0b5ed7;
+}
+
+div[data-toggle=buttons] label.active {
+  color: #0b5ed7;
+}
+
+div[data-toggle=buttons] label {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 2em;
+  text-align: left;
+  white-space: nowrap;
+  vertical-align: top;
+  cursor: pointer;
+  background-color: none;
+  border: 0px solid #c8c8c8;
+  border-radius: 3px;
+  color: #c8c8c8;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+div[data-toggle=buttons] label:active, div[data-toggle=buttons] label.active {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
