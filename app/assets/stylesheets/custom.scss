@@ -67,6 +67,7 @@ input {
 }
 
 /* homeページ room */
+
 .icon-circle{
   width: 80px;
   height: 80px;
@@ -117,6 +118,7 @@ input {
 }
 
 /* pre-login page */
+
 .center{
   background-color: #ededed;
   width: 100%;
@@ -176,4 +178,10 @@ animation :infinity-scroll-left 95s infinite linear 0.5s both;
 
 .d-demo__list li{
   padding-right: 10px;
+}
+
+/* Friends List page */
+
+.friendLink{
+  text-decoration: none;
 }
