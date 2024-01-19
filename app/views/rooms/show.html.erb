@@ -8,7 +8,12 @@
     <%= render @room %>
 
     <%= link_to 'Edit', edit_room_path(@room), class: "btn btn-outline-primary btn-sm" %>
-    <%= link_to 'Back', root_path, class: "btn btn-outline-secondary btn-sm", "data-turbo-frame": "_top" %>
+    <%= link_to root_path, "data-turbo-frame": "_top" do%>
+      <button class="btn btn-secondary">
+        <i class="bi bi-arrow-left"></i>
+        ホームへ戻る
+      </button>
+    <% end %>
     <%= button_to "Destroy this room", @room, method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？", turbo: false  } %>
   <% end %>
 </div>
