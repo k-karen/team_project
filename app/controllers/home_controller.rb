@@ -6,7 +6,10 @@ class HomeController < ApplicationController
       current_user.rooms
         .left_joins(:messages)
         .group("rooms.id")
-        .order("max(messages.created_at) DESC, rooms.id desc")
+        .order(
+          Arel.sql("CASE WHEN COUNT(messages.id) = 0
+            THEN rooms.created_at ELSE MAX(messages.created_at) END DESC, rooms.id DESC"),
+        )
     else
       []
     end
