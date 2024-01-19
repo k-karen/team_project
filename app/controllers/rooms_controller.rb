@@ -3,6 +3,7 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy]
   before_action :require_login
+  before_action :check_access, only: [:show]
 
   # GET /rooms or /rooms.json
   def index

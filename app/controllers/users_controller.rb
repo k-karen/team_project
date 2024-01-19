@@ -61,10 +61,4 @@ class UsersController < ApplicationController
       redirect_to(login_url, status: :see_other)
     end
   end
-
-  def check_access
-    unless request.referer.present? && URI(request.referer).host == request.host
-      redirect_to(root_path, alert: "アクセスは許可されていません。")
-    end
-  end
 end
