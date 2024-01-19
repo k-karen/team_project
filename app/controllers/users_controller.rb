@@ -2,6 +2,7 @@
 
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update]
+  before_action :check_access, only: [:show]
   def new
     @user = User.new
   end
@@ -58,6 +59,12 @@ class UsersController < ApplicationController
     unless logged_in?
       flash[:alert] = "Please log in."
       redirect_to(login_url, status: :see_other)
+    end
+  end
+
+  def check_access
+    unless request.referer.present? && URI(request.referer).host == request.host
+      redirect_to(root_path, alert: "アクセスは許可されていません。")
     end
   end
 end
