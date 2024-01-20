@@ -12,7 +12,12 @@ class RoomsController < ApplicationController
   # GET /rooms/1 or /rooms/1.json
   def show
     @room = Room.find(params[:id])
-    @messages = @room.messages.where('created_at >= ?', @room.retention_minutes.minutes.ago)
+    # nilだった場合は、すべてのメッセージを表示
+    if @room.retention_minutes.present?
+      @messages = @room.messages.where('created_at >= ?', @room.retention_minutes.minutes.ago)
+    else
+      @messages = @room.messages
+    end
   end
 
   # GET /rooms/new
@@ -30,6 +35,9 @@ class RoomsController < ApplicationController
     @room = Room.new(room_params)
     @users = current_user.friends.where(id: room_user_params[:user_ids])
     @room.users.append([current_user, *@users])
+
+    total_minutes = (@room.retention_hours.to_i * 60) + @room.retention_minutes.to_i
+    @room.retention_minutes = total_minutes
 
     respond_to do |format|
       if @room.save
@@ -74,7 +82,7 @@ class RoomsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def room_params
-    params.require(:room).permit(:name, :retention_minutes)
+    params.require(:room).permit(:name, :retention_minutes, :retention_hours)
   end
 
   def room_user_params
