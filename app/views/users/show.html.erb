@@ -22,5 +22,12 @@
         友達一覧へ戻る
       </button>
     <% end %>
+  <% else %>
+    <%= link_to root_path do%>
+      <button class="btn btn-secondary">
+        <i class="bi bi-arrow-left"></i>
+        ホームへ戻る
+      </button>
+    <% end %>
   <% end %>
 </div>
