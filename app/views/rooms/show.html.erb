@@ -13,9 +13,12 @@
   <% end %>
 </div>
 
+<!-- 保持期間表示 -->
+<p>保持期間 : <%= @room.retention_minutes %>（分）</p>
+
 <!-- メッセージリスト -->
 <div id="messages" class="border rounded messages-container">
-  <%= render @room.messages %>
+  <%= render @messages %>
 </div>
 
 

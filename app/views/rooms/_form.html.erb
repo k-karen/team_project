@@ -13,6 +13,12 @@
     <% end %>
       <%= form.label :name %>
       <%= form.text_field :name, class: 'form-control'%>
+    
+    <!-- 保持期間設定フィールド -->
+    <div class="field">
+      <%= form.label :retention_minutes, "保持期間（分）" %>
+      <%= form.number_field :retention_minutes, in: 1..60, step: 1, id: :room_retention_minutes %>
+    </div>
 
     <div class="btn-group btn-group-vertical" data-toggle="buttons">
       <%= form.collection_check_boxes(:user_ids, current_user.friends, :id, :username) do |user| %>

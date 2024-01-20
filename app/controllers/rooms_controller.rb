@@ -11,6 +11,8 @@ class RoomsController < ApplicationController
 
   # GET /rooms/1 or /rooms/1.json
   def show
+    @room = Room.find(params[:id])
+    @messages = @room.messages.where('created_at >= ?', @room.retention_minutes.minutes.ago)
   end
 
   # GET /rooms/new
@@ -72,7 +74,7 @@ class RoomsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def room_params
-    params.require(:room).permit(:name)
+    params.require(:room).permit(:name, :retention_minutes)
   end
 
   def room_user_params
