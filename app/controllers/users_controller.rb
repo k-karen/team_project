@@ -7,7 +7,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user.friends.find(params[:id])
+    @user = if params[:id] == current_user.id.to_s
+      current_user
+    else
+      current_user.friends.find(params[:id])
+    end
   end
 
   def create
