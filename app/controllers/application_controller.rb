@@ -9,4 +9,10 @@ class ApplicationController < ActionController::Base
   def require_login
     redirect_to(login_path, alert: "ログインしてください") unless logged_in?
   end
+
+  def check_access
+    unless request.referer.present? && URI(request.referer).host == request.host
+      redirect_to(root_path, alert: "アクセスは許可されていません。")
+    end
+  end
 end
