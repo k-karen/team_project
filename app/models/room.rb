@@ -2,6 +2,7 @@
 
 class Room < ApplicationRecord
   attr_accessor :user_ids # for form
+  attr_accessor :retention_hours # for room
 
   # Roomを消したときに、そのRoomに紐づくMessageも一緒に消えるようにする
   has_many :messages, dependent: :destroy
