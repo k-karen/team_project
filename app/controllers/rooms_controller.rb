@@ -14,7 +14,7 @@ class RoomsController < ApplicationController
     @room = current_user.rooms.find(params[:id])
     # nilだった場合は、すべてのメッセージを表示
     @messages = if @room.retention_minutes.present?
-      @messages = @room.messages.where('created_at >= ?', @room.retention_minutes.minutes.ago)
+      @messages = @room.messages.where("created_at >= ?", @room.retention_minutes.minutes.ago)
     else
       @messages = @room.messages
     end
