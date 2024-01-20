@@ -3,7 +3,6 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy]
   before_action :require_login
-  before_action :check_access, only: [:show]
 
   # GET /rooms or /rooms.json
   def index
@@ -12,6 +11,7 @@ class RoomsController < ApplicationController
 
   # GET /rooms/1 or /rooms/1.json
   def show
+    @room = current_user.rooms.find(params[:id])
   end
 
   # GET /rooms/new
