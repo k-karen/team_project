@@ -12,12 +12,22 @@ services:
       - bundle_data:/usr/local/bundle
     environment:
       NOTHING: "NOTHING"
+      REDIS_URL: redis://redis:6379/1
     command: >
       bash -c "rm /app/tmp/pids/server.pid; bundle && yarn && bundle exec rails db:migrate && PROCFILE=procfile.dev bin/dev"
     stdin_open: true
     tty: true
     ports:
       - "3000:3000"
+    networks:
+      - net
+  redis:
+    image: "redis:alpine"
+    networks:
+      - net
 
 volumes:
   bundle_data:
+
+networks:
+  net:
