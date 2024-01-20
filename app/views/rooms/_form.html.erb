@@ -22,7 +22,7 @@
 
     <div class="field">
       <%= form.label :retention_minutes, "保持期間（分）" %>
-      <%= form.number_field :retention_minutes, in: 1..60, step: 1, value: 0, id: :room_retention_minutes %>
+      <%= form.number_field :retention_minutes, in: 0..60, step: 1, value: 0, id: :room_retention_minutes %>
     </div>
 
     <div class="btn-group btn-group-vertical" data-toggle="buttons">
