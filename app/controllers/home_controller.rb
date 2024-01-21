@@ -3,13 +3,7 @@
 class HomeController < ApplicationController
   def index
     @rooms = if current_user
-      current_user.rooms
-        .left_joins(:messages)
-        .group("rooms.id")
-        .order(
-          Arel.sql("CASE WHEN COUNT(messages.id) = 0
-            THEN rooms.created_at ELSE MAX(messages.created_at) END DESC, rooms.id DESC"),
-        )
+      current_user.rooms.order(updated_at: :desc)
     else
       []
     end
