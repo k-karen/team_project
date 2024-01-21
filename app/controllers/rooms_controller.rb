@@ -13,10 +13,10 @@ class RoomsController < ApplicationController
   def show
     @room = current_user.rooms.find(params[:id])
     # nilだった場合は、すべてのメッセージを表示
-    if @room.retention_minutes.present?
-      @messages = @room.messages.where("created_at >= ?", @room.retention_minutes.minutes.ago)
+    @messages = if @room.retention_minutes.present?
+      @room.messages.where("created_at >= ?", @room.retention_minutes.minutes.ago)
     else
-      @messages = @room.messages
+      @room.messages
     end
   end
 
