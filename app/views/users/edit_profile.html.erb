@@ -1,0 +1,32 @@
+<h1>Update your profle</h1>
+
+<div class="row justify-content-center">
+  <div class="col-md-6 col-md-offset-3">
+
+    <div class="gravatar_edit">
+      <%= gravatar_for current_user %>
+      <a href="https://gravatar.com/emails" target="_blank">change</a>
+    </div>
+
+    <br>
+
+    <%= form_with(model: @user, url: update_user_profile_path, method: :patch) do |f| %>
+
+      <%= f.label :age %>
+      <%= f.number_field :age, class: 'form-control' %>
+  
+      <%= f.label :biography %>
+      <%= f.text_area :biography, class: 'form-control', rows: "5" %>
+
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <% end %>
+
+    <%= link_to current_user do%>
+      <button class="btn btn-secondary">
+        <i class="bi bi-arrow-left"></i>
+        Back
+      </button>
+    <% end %>
+
+  </div>
+</div>
