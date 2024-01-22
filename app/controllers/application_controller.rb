@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    redirect_to(login_path, alert: "ログインしてください") unless logged_in?
+    redirect_to(login_path, alert: "Please login!") unless logged_in?
   end
 
   def record_not_found(_execption)
