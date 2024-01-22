@@ -9,7 +9,7 @@
     <%= link_to root_path, "data-turbo-frame": "_top" do%>
       <button class="btn btn-outline-secondary btn-sm">
         <i class="bi bi-arrow-left"></i>
-        ホームへ戻る
+        Back
       </button>
     <% end %>
     <%= button_to "Destroy this room", @room, method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？", turbo: false  } %>

@@ -4,12 +4,23 @@
        <%= gravatar_for @user, size: 300 %>
     </div>
     <div class="card-body">
-      <h2 class="card-title"><strong><%= @user.username %></strong></h2>
+      <div class="d-flex">
+        <h2 class="card-title mx-auto"><strong><%= @user.username %></strong></h2>
+        <% if current_user == @user %> 
+          <%= link_to edit_user_settings_path do%>
+            <h2 class="ms-auto"><i class="bi bi-gear" ></i></h2>
+          <% end %>
+        <% end %>
+      </div>
+      
       <p class="card-text"><%= display_birthdate @user %></p>
       <p class="card-text"><%= @user.biography %></p>
       <% if current_user == @user %>
         <%= link_to edit_user_profile_path do%>
-          <button class="btn btn-primary">プロフィール変更</button>
+          <button class="btn btn-primary">
+            <i class="bi bi-pencil-square"></i>
+            Edit Profile
+          </button>
         <% end %>
       <% end %>
     </div>
@@ -19,14 +30,14 @@
     <%= link_to friendships_path do%>
       <button class="btn btn-secondary">
         <i class="bi bi-arrow-left"></i>
-        友達一覧へ戻る
+        Back
       </button>
     <% end %>
   <% else %>
     <%= link_to root_path do%>
       <button class="btn btn-secondary">
         <i class="bi bi-arrow-left"></i>
-        ホームへ戻る
+        Back
       </button>
     <% end %>
   <% end %>

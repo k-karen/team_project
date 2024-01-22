@@ -14,7 +14,6 @@
           <%= room.id %>
         </h4>
         <h4 id="latest-message">
-          <!-- 最新のメッセージを表示 TODO: turboを使ってメッセージ送信をトリガーにリアルタイムで並び替える -->
           <% latest_message = room.messages.last %>
           <%= latest_message&.content %>
         </h4>
