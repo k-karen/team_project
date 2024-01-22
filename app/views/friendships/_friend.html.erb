@@ -1,17 +1,15 @@
-  <%= turbo_frame_tag friend do %>
-    <div class="col-md-4">
-      <div class="mb-4 d-flex justify-content-evenly align-items-center">
-        <%= link_to user_path(friend.id), data: { turbo_frame: "_top" }, class: "friendLink" do %>
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title d-flex justify-content-between">
-                <%= friend.username %>
-                <%= button_to '', friendship_path(friend.id), method: :delete, data: { turbo_confirm: '友達やめますか？' }, class: 'btn-close m-0', onclick: "event.stopPropagation()" %>
-              </h5>
-              <p class="card-text"><%= friend.email %></p>
-            </div>
-          </div>
-        <% end %>
+<%= turbo_frame_tag friend, class: 'd-flex' do %>
+  <div class="mb-4 d-flex justify-content-evenly align-items-center">
+    <%= link_to user_path(friend.id), data: { turbo_frame: "_top" }, class: "friendLink" do %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title d-flex justify-content-between">
+            <%= friend.username %>
+            <%= button_to '', friendship_path(friend.id), method: :delete, data: { turbo_confirm: '友達やめますか？' }, class: 'btn-close m-0', onclick: "event.stopPropagation()" %>
+          </h5>
+          <p class="card-text"><%= friend.email %></p>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+<% end %>
