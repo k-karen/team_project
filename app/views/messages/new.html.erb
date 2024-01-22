@@ -1,6 +1,6 @@
 <h1>New Message</h1>
 
-<%= turbo_frame_tag "new_message", target: "_top" do %>
+<%= turbo_frame_tag dom_id(Message.new), target: "_top" do %>
   <%= form_with(model: [ @message.room, @message ], data: { controller: "form", action: "turbo:submit-end->form#reset" }) do |form| %>
   <div class="input-group">
     <%= form.text_area :content, class: "form-control", placeholder: "Type a message...", rows: 1 %>
