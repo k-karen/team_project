@@ -9,7 +9,7 @@
 <% end %>
 
 <div id="friends">
-  <%= turbo_frame_tag "friends", data: { turbo_action: :advance } do %>
+  <%= turbo_frame_tag "friends", class: 'd-flex w-100 flex-wrap justify-content-between', data: { turbo_action: :advance } do %>
     <%= render 'friends', friends: @friends %>
   <% end %>
 </div>
