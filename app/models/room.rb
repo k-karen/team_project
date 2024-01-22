@@ -9,8 +9,19 @@ class Room < ApplicationRecord
 
   has_and_belongs_to_many :users
 
-  broadcasts_to ->(_room) { :rooms }, inserts_by: :prepend
-  after_create_commit  { broadcast_prepend_to "rooms" }
-  after_update_commit  { broadcast_prepend_to "rooms" }
-  after_destroy_commit { broadcast_remove_to "rooms" }
+  after_create_commit do |room|
+    room.users.pluck(:id).each do |user_id|
+      broadcast_prepend_to "user_#{user_id}_rooms", partial: "rooms/room", target: "user_#{user_id}_rooms"
+    end
+  end
+  after_update_commit do |room|
+    room.users.pluck(:id).each do |user_id|
+      broadcast_prepend_to "user_#{user_id}_rooms", partial: "rooms/room", target: "user_#{user_id}_rooms"
+    end
+  end
+  before_destroy do |room|
+    room.users.pluck(:id).each do |user_id|
+      broadcast_remove_to "user_#{user_id}_rooms"
+    end
+  end
 end

@@ -11,7 +11,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= javascript_include_tag "turbo", type: "module" %>
   </head>
-  <body>
+  <body data-user-id="<%= current_user&.id %>">
     <nav class="navbar navbar-expand navbar-light bg-light sticky-top border-bottom">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">g2</a>

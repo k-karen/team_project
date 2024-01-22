@@ -1,4 +1,4 @@
-<%= turbo_stream_from "rooms" %>
+<%= turbo_stream_from my_room_list_stream %> <%# "#{current_user.id}_rooms"%>
 
 <div class="row p-3">
   <aside class="col-md-4" style="height: 200px;">
@@ -23,10 +23,8 @@
         <i class="bi bi-plus"></i>
       <% end %>
     </h1>
-    <%= turbo_frame_tag "rooms" do %>
-      <% @rooms.each do |room| %>
-        <%= render 'rooms/room', room: room %>
-      <% end %>
+    <%= turbo_frame_tag my_room_list_stream do %>
+      <%= render @rooms %>
     <% end %>
   </div>
 </div>
