@@ -19,9 +19,9 @@ Rails.application.routes.draw do
   get 'sign_up', to: 'users#new', as: :sign_up
   post 'sign_up', to: 'users#create'
 
-  # 新しいルートを追加
-  get 'users/profile/edit', to: 'users#edit', as: :edit_user_profile
-  patch 'users/profile', to: 'users#update', as: :update_user_profile
+  # user settings
+  get 'users/settings/edit', to: 'users#edit', as: :edit_user_settings
+  patch 'users/settings', to: 'users#update', as: :update_user_settings
   
   resources :users do
     collection do
