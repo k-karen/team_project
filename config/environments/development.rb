@@ -78,4 +78,5 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options =  { host: 'localhost', protocol: 'http', port: '3000' }
 
+  config.time_zone = 'Tokyo'
 end
