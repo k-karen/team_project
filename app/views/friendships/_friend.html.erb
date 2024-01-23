@@ -5,7 +5,7 @@
         <div class="card-body">
           <h5 class="card-title d-flex justify-content-between">
             <%= friend.username %>
-            <%= button_to '', friendship_path(friend.id), method: :delete, data: { turbo_confirm: '友達やめますか？' }, class: 'btn-close m-0', onclick: "event.stopPropagation()" %>
+            <%= button_to '', friendship_path(friend.id), method: :delete, data: { turbo_confirm: 'Would you like to stop being friends?' }, class: 'btn-close m-0', onclick: "event.stopPropagation()" %>
           </h5>
           <p class="card-text"><%= friend.email %></p>
         </div>
