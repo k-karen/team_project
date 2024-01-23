@@ -23,6 +23,6 @@ class ReactionsController < ApplicationController
   end
 
   def reaction_params
-    params.require(:reaction).permit(:user_id, :reaction_type)
+    params.require(:reaction).permit(:user_id, :reaction_type, :message_id)
   end
 end

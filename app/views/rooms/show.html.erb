@@ -1,5 +1,12 @@
 <%= turbo_stream_from @room %>
 
+<!-- リアクションで利用するため定義 -->
+<script>
+  var roomId = <%= @room.id %>;
+  var messageId = <%= @message.id %>;
+  var userId = <%= current_user.id %>;
+</script>
+
 <!-- ルームアクション -->
 <div id="room-actions" class="mb-3 text-right position-relative">
   <%= turbo_frame_tag "room" do %>

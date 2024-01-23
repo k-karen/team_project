@@ -2,4 +2,7 @@
   <strong><%= message.user.username %></strong>
   <span class="message_timestamp"><%= message.created_at.strftime('%m/%d %a %H:%M') %></span>
   <%= simple_format(message.content, {}, wrapper_tag: :div, class: "card-text") %>
+
+  <!-- リアクションボタン -->
+  <button class="like-button" data-message-id="<%= message.id %>">いいね</button>
 </div>
