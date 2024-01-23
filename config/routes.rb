@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   mount(LetterOpenerWeb::Engine, at: '/letter_opener') if Rails.env.development?
 
   resources :rooms do
-    resources :messages
+    resources :messages do
+      resources :reactions, only: [:create, :destroy]
+    end
   end
-
-  
 
   # around login, sign_up, logout
   get 'login', to: 'sessions#new', as: :login
