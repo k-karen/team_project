@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_11_202255) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_23_061034) do
   create_table "friendships", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "friend_id", null: false
@@ -30,6 +30,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_11_202255) do
     t.integer "user_id"
     t.index ["room_id"], name: "index_messages_on_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "reactions", force: :cascade do |t|
+    t.integer "message_id", null: false
+    t.integer "user_id", null: false
+    t.string "reaction_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["message_id"], name: "index_reactions_on_message_id"
+    t.index ["user_id"], name: "index_reactions_on_user_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -70,4 +80,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_11_202255) do
   add_foreign_key "friendships", "users", column: "friend_id"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "reactions", "messages"
+  add_foreign_key "reactions", "users"
 end
