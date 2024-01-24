@@ -9,14 +9,20 @@
           <strong>RoomName:</strong>
           <%= room.name %>
         </h4>
-        <h4>
-          <strong>id:</strong>
-          <%= room.id %>
-        </h4>
-        <h4 id="latest-message">
+        <div class="d-flex justify-content-between" id="latest-message"> 
+          
           <% latest_message = room.messages.last %>
-          <%= latest_message&.content %>
-        </h4>
+          <% retention_time = Time.now.in_time_zone - room.retention_minutes.minutes %>
+
+          <% if latest_message && latest_message.created_at > retention_time %>
+            <h4>
+              <%= latest_message.content %>
+            </h4>
+            <p>
+              <%= format_date(latest_message&.created_at) %>
+            </p>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>
