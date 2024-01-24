@@ -25,14 +25,14 @@
       <%= form.number_field :retention_minutes, in: 0..60, step: 1, value: 1, id: :room_retention_minutes, class: 'form-control'%>
     </div>
 
-    <div class="btn-group btn-group-vertical" data-toggle="buttons">
+    <div class="btn-group btn-group-vertical">
       <%= form.collection_check_boxes(:user_ids, current_user.friends, :id, :username) do |user| %>
-        <label class="btn" for="room_user_ids_<%= user.object.id %>">
+        <%= user.label class: 'btn d-flex align-items-center' do%>
           <%= user.check_box %>
           <i class="bi bi-app"></i>
           <i class="bi bi-check2-square"></i>
-          <span><%= user.text %></span>
-        </label>
+          <span class="px-1"><%= user.text %></span>
+        <% end %>
       <% end %>
     </div>
     
