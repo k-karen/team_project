@@ -40,6 +40,10 @@
 <%= turbo_frame_tag dom_id(Message.new), src: new_room_message_path(@room), target: "_top" %>
 
 <style>
+#messages {
+  padding: 5px;
+}
+
 .message-<%= current_user.id %> {
   background-color: hwb(120deg 30.02% 25.47%);
   border-radius: 7.5px;
