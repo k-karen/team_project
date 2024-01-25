@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_11_202255) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_25_002819) do
   create_table "friendships", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "friend_id", null: false
@@ -59,8 +59,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_11_202255) do
     t.string "activation_state"
     t.string "activation_token"
     t.datetime "activation_token_expires_at"
-    t.integer "age"
     t.string "biography"
+    t.date "birthday"
     t.index ["activation_token"], name: "index_users_on_activation_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

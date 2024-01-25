@@ -12,8 +12,8 @@
 
     <%= form_with(model: @user, url: update_user_profile_path, method: :patch) do |f| %>
 
-      <%= f.label :age %>
-      <%= f.number_field :age, class: 'form-control' %>
+      <%= f.label :birthday %>
+      <%= f.date_field :birthday, class: 'form-control' %>
   
       <%= f.label :biography %>
       <%= f.text_area :biography, class: 'form-control', rows: "5" %>
