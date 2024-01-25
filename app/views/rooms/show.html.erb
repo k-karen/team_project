@@ -24,7 +24,7 @@
     <% minutes = @room.retention_minutes % 60 %>
     <span class="badge bg-secondary text-white">
       Message Expiration Time: 
-      <span class="expiration-time"><%= sprintf('%02d:%02d', hours, minutes) %></span>
+      <span class="expiration-time"><%= sprintf('%02d:%02d:%02d', hours, minutes, 00) %></span>
   <% else %>
     <span class="badge bg-secondary text-white">Message Expiration Time: -</span>
   <% end %>
