@@ -3,7 +3,6 @@
 <!-- ルームアクション -->
 <div id="room-actions" class="mb-3 text-right position-relative">
   <%= turbo_frame_tag "room" do %>
-    <%= render @room %>
 
     <%= link_to 'Edit', edit_room_path(@room), class: "btn btn-outline-primary btn-sm" %>
     <%= link_to root_path, "data-turbo-frame": "_top" do %>
