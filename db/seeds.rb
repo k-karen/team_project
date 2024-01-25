@@ -13,7 +13,7 @@ users = []
     email: "sample_#{i}@example.com",
     password: "aiit-password",
     username: Faker::Internet.unique.username,
-    age: rand(18..100),
+    birthday: Faker::Date.birthday(min_age: 18, max_age: 100),
     biography: Faker::Lorem.sentence,
   )
   user.activate!
