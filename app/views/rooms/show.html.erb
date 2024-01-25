@@ -1,35 +1,37 @@
 <%= turbo_stream_from @room %>
 
 <!-- ルームアクション -->
-<div id="room-actions" class="mb-3 text-right position-relative">
+<div id="room-actions" class="mb-3">
   <%= turbo_frame_tag "room" do %>
-
-    <%= link_to 'Edit', edit_room_path(@room), class: "btn btn-outline-primary btn-sm" %>
-    <%= link_to root_path, "data-turbo-frame": "_top" do %>
-      <button class="btn btn-outline-secondary btn-sm">
-        <i class="bi bi-arrow-left"></i>
-        Back
-      </button>
-    <% end %>
-    <%= button_to "Destroy this room", @room, method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？", turbo: false } %>
-
-    <!-- 保持期間表示、絶対位置指定でボタン群の右上に配置 -->
-    <div style="position: absolute; bottom: 0; right: 0; margin-right: 20px;">
-      <% if @room.retention_minutes.present? %>
-        <% hours = @room.retention_minutes / 60 %>
-        <% minutes = @room.retention_minutes % 60 %>
-        <span class="badge bg-secondary text-white">
-          Message Expiration Time: 
-          <span class="expiration-time"><%= sprintf('%02d:%02d', hours, minutes) %></span>
-      <% else %>
-        <span class="badge bg-secondary text-white">Message Expiration Time: -</span>
+    <div class="room-actions-container">
+      <%= link_to root_path, "data-turbo-frame": "_top" do %>
+        <button class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-arrow-left"></i>
+          Back
+        </button>
       <% end %>
+      <%= link_to 'Edit', edit_room_path(@room), class: "btn btn-outline-primary btn-sm" %>
+      <div class="actions-right">
+        <%= button_to "Destroy this room", @room, method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？", turbo: false } %>
     </div>
   <% end %>
 </div>
 
+<!-- 保持期間表示、絶対位置指定でボタン群の右上に配置 -->
+<div class="d-flex justify-content-end mt-1">
+  <% if @room.retention_minutes.present? %>
+    <% hours = @room.retention_minutes / 60 %>
+    <% minutes = @room.retention_minutes % 60 %>
+    <span class="badge bg-secondary text-white">
+      Message Expiration Time: 
+      <span class="expiration-time"><%= sprintf('%02d:%02d', hours, minutes) %></span>
+  <% else %>
+    <span class="badge bg-secondary text-white">Message Expiration Time: -</span>
+  <% end %>
+</div>
+
 <!-- メッセージリスト -->
-<div id="messages" class="border rounded messages-container">
+<div id="messages" class="border rounded messages-container mt-1">
   <%= render @messages %>
 </div>
 
@@ -58,5 +60,14 @@
   float: left;
   clear: both;
   word-wrap: break-word;
+}
+
+.room-actions-container {
+  display: flex;
+  align-items: center;
+}
+
+.actions-right {
+  margin-left: auto;
 }
 </style>
