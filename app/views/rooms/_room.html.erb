@@ -16,7 +16,7 @@
           <% if room.retention_minutes %>
             <% retention_time = Time.now.in_time_zone - room.retention_minutes.minutes %>
           <% else %>
-            <% retention_time = Time.now.in_time_zone + 100.years %>
+            <% retention_time = Time.now.in_time_zone - 100.years %>
           <% end %>
 
           <% if latest_message && latest_message.created_at > retention_time %>
