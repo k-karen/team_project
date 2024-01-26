@@ -82,7 +82,7 @@ class RoomsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def room_params
-    params.require(:room).permit(:name, :retention_minutes, :retention_hours)
+    params.require(:room).permit(:name, :retention_minutes, :retention_hours, :image)
   end
 
   def room_user_params

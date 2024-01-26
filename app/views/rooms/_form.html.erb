@@ -25,6 +25,15 @@
       <%= form.number_field :retention_minutes, in: 1..60, step: 1, value: 1, id: :room_retention_minutes, class: 'form-control'%>
     </div>
 
+    <div class="field">
+      <%= form.label :image %>
+      <div class="d-flex">
+        <%= form.file_field :image, class: "w-auto border-0 form-control-sm" %>
+        <%= render_room_image(room) if room.image.attached? %>
+      </div>
+    </div>
+
+
     <div class="btn-group btn-group-vertical">
       <%= form.collection_check_boxes(:user_ids, current_user.friends, :id, :username) do |user| %>
         <%= user.label class: 'btn d-flex align-items-center' do%>
@@ -36,6 +45,6 @@
       <% end %>
     </div>
     
-    <%= form.submit "Create Room", class: "btn btn-primary"  %>
+    <%= form.submit "#{room.persisted? ? "Update" : "Create"} Room", class: "btn btn-primary"  %>
   <% end %>
 <% end %>
