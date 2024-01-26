@@ -12,7 +12,12 @@
         <div class="d-flex justify-content-between" id="latest-message"> 
           
           <% latest_message = room.messages.last %>
-          <% retention_time = Time.now.in_time_zone - room.retention_minutes.minutes %>
+          <!-- retention_minutesが設定されていない場合の対処のため -->
+          <% if room.retention_minutes %>
+            <% retention_time = Time.now.in_time_zone - room.retention_minutes.minutes %>
+          <% else %>
+            <% retention_time = Time.now.in_time_zone + 100.years %>
+          <% end %>
 
           <% if latest_message && latest_message.created_at > retention_time %>
             <h4>
