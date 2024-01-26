@@ -3,7 +3,7 @@
 <%= turbo_frame_tag dom_id(Message.new), target: "_top" do %>
   <%= form_with(model: [ @message.room, @message ], data: { controller: "form", action: "turbo:submit-end->form#reset" }) do |form| %>
   <div class="input-group">
-    <%= form.text_area :content, class: "form-control", placeholder: "Type a message...", rows: 1 %>
+    <%= form.text_field :content, class: "form-control", placeholder: "Type a message...", rows: 1 %>
     <div class="input-group-append">
       <%= form.submit "send", class: "btn btn-primary" %>
     </div>

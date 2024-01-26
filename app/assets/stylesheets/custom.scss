@@ -96,13 +96,6 @@ input {
 }
 
 /* messages */
-.message {
-  display: block;
-  font-size: 1em;
-  margin-top: 5px;
-  text-align: right;
-}
-
 .message_timestamp {
   font-size: 0.8em;
   margin-top: 5px;
@@ -110,15 +103,21 @@ input {
   color: #404040;
 }
 
-/* 配置コンテンツ次第でheightの調整が必要になる。 */
 .messages-container {
-  height: calc(100vh - 360px);
-  overflow-y: auto;
   background-color: #f8f9fa; 
 }
 
 .expiration-time {
   font-size: 1.25em;
+}
+
+#message-features {
+  height: calc(100vh - 65px); 
+}
+
+#messages {
+  overflow-y: auto;
+  padding: 5px;
 }
 
 /* pre-login page */
