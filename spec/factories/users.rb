@@ -4,7 +4,7 @@ FactoryBot.define do
   factory :user do
     email { Faker::Internet.email }
     username { Faker::Internet.username }
-    age { rand(18..100) }
+    birthday { Faker::Date.birthday(min_age: 18, max_age: 100) }
     biography { Faker::Lorem.sentence }
     password { "aiit-password" }
 
