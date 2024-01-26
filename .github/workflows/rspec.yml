@@ -1,0 +1,27 @@
+name: Rspec
+on: [pull_request]
+
+jobs:
+  run_spec:
+    name: Run spec
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v4
+    - name: Set up Ruby 3.2
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.2.2'
+    - name: Cache bundle directory
+      uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gem-
+    - name: Test with Rspec
+      run: |
+        gem install bundler -v '2.3.14'
+        bundle install --path vendor/bundle --quiet --jobs 4 --retry 3
+        bundle exec rspec
