@@ -91,3 +91,5 @@ gem "cssbundling-rails", "~> 1.3"
 gem "aws-sdk-rails", "~> 3.9"
 
 gem "redis", "~> 5.0"
+
+gem "image_processing", "~> 1.2"

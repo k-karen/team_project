@@ -14,6 +14,8 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :rooms
 
+  has_one_attached :icon
+
   validates :email, uniqueness: true
   validates :username, uniqueness: true
 end

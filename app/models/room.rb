@@ -8,6 +8,7 @@ class Room < ApplicationRecord
   has_many :messages, dependent: :destroy
 
   has_and_belongs_to_many :users
+  has_one_attached :image
 
   after_create_commit do |room|
     room.users.pluck(:id).each do |user_id|

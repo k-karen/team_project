@@ -33,5 +33,6 @@ Rails.application.routes.draw do
     end
   end
 
-  match '*not_found_path' => 'home#not_found', via: :all
+  # to avoid catch active_storage routes
+  match '*not_found_path' => 'home#not_found', via: :all, constraints: -> { _1.path.exclude? 'rails/active_storage' }
 end
