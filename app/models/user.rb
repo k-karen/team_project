@@ -13,4 +13,7 @@ class User < ApplicationRecord
   has_many :inverse_friends, through: :inverse_friendships, source: :user
 
   has_and_belongs_to_many :rooms
+
+  validates :email, uniqueness: true
+  validates :username, uniqueness: true
 end
