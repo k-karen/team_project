@@ -71,7 +71,7 @@ class UsersController < ApplicationController
   end
 
   def user_profile_params
-    params.require(:user).permit(:biography, :birthday)
+    params.require(:user).permit(:biography, :birthday, :icon)
   end
 
   # beforeフィルタ

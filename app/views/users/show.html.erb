@@ -1,7 +1,7 @@
 <div class="px-5">
   <div class="card p-3 d-flex flex-row" style="">
     <div class="card-img-div">
-       <%= gravatar_for @user, size: 300 %>
+      <%= render_user_icon(@user, size: [120, 120]) %>
     </div>
     <div class="card-body">
       <div class="d-flex">

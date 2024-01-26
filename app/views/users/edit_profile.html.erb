@@ -2,16 +2,13 @@
 
 <div class="row justify-content-center">
   <div class="col-md-6 col-md-offset-3">
-
-    <div class="gravatar_edit">
-      <%= gravatar_for current_user %>
-      <a href="https://gravatar.com/emails" target="_blank">change</a>
-    </div>
-
-    <br>
-
     <%= form_with(model: @user, url: update_user_profile_path, method: :patch) do |f| %>
 
+      <div class="d-flex">
+        <%= f.file_field :icon, class: "w-auto border-0 form-control-sm" %>
+        <%= render_user_icon(@user) if @user.icon.attached? %>
+      </div>
+        
       <%= f.label :birthday %>
       <%= f.date_field :birthday, class: 'form-control' %>
   
@@ -27,6 +24,5 @@
         Back
       </button>
     <% end %>
-
   </div>
 </div>
